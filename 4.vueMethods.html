@@ -14,18 +14,30 @@
     {{ age}}
     {{name}}
 </div>
+<div id="app1">
+    app1
+    <div>{{message}}</div>
+</div>
 <script src="node_modules/vue/dist/vue.js"></script>
 <script>
-    var msg = {message: "<div>hello world<div>"};
+    var msg = {message: "hello world"};
     var vm = new Vue({
         el: "#app",
         data: msg
     });
 
-    //    动态添加属性
-    vm.$set("age", 100);
-    //动态添加属性
-    Vue.set(msg, "name", "li xiansheng");
+    //   console.log(vm.$el);
+    //   var el=document.querySelector('#app');
+    //    console.log(el);
+    //  vm.$el = document.querySelector('#app1');
+    //    更改data对象属性，刷新视图，尽量不要更改。
+    //  vm.$data = {message: "li li"};
+    //  console.log(vm.$el);
+    //  console.log(vm.$data);
+
+    vm.$watch("message", function (newValue, oldValue) {
+        console.log(oldValue, newValue);
+    });
 </script>
 </body>
 </html>

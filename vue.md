@@ -52,3 +52,86 @@ vue.js是构建数据驱动的web界面框架，并不是一个全能的框架�
          Vue.set(msg,"name","li xiansheng");
 
 ## 4. vue实例属性和方法
+### vue通过$暴露实例上的属性和方法
+### 4.1 $el vue实例绑定的当前元素。
+
+    不能更改绑定的对象。更改绑定对象元素并不能绑定新的对象和刷新视图。
+    $el 实际上采用javascript原生的ducument.querySelector("#app")，来获取绑定对象元素。
+
+### 4.2 $data 获取当前绑定的数据
+
+    更改data对象属性，属性视图，尽量不要更改。
+
+### 4.3 $watch 监控模型变化
+
+    vm.$watch("message",function(newVal,oldVal){
+    console.log(newVal,oldVal);
+    });
+
+## 5. 生命周期
+
+| 方法名   |	     用法  |
+| --------- |------------|
+| created|先实例化,在实例化后(检测el)|
+| vm.$mount('#app')|	手动挂载实例|
+|beforeCompile|	开始编译之前|
+|compiled|	编译完成后|
+|ready|	插入文档后|
+|vm.$destroy()	|手动销毁实例|
+|beforeDestroy	|将要销毁|
+|destroyed	|销毁实例|
+
+### 5.1 生命周期的使用
+``````
+var vm = new Vue({
+    data:{
+        hello:'zfpx'
+    },
+    created: function () {alert('实例创建完成');},
+    beforeCompile: function () {alert('开始编译前')},
+    compiled: function () {alert('编译完成')},
+    ready: function () {alert('准备好了')},
+    beforeDestroy: function () {alert('准备销毁')},
+    destroyed: function () {alert("销毁")}
+});
+vm.$mount('#app'); // 手动挂载绑定元素
+vm.$destroy();// 实例销毁
+``````
+
+### 5.2 属性计算 computed
+vue 实例中的this 指的是当前实例对象。
+````
+var vm = new Vue({
+    data:{
+        name:'zfpx'
+    },
+    computed:{
+    hello:funciton(){
+    return this.name+1111; //this 指的是实例vm
+    }
+    }//对象，可以定义多个属性计算方法
+});
+````
+
+### 5.3 属性的获取和设置
+
+````
+var vm = new Vue({
+    data:{
+        name:'zfpx'
+    },
+    computed:{
+    hello:
+    {
+      get:funciton(){
+        returen this.name+1111;
+      },
+      set:function(val){
+        this.name=val;
+      }
+    }
+    }//对象，可以定义多个属性计算方法
+});
+````
+
+## 6. vue 指令
