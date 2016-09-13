@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="message">
+    <!--正常的绑定表达式，此时会将表达式中的标签也显示在界面上-->
+    {{message}}
+    <!--可以将带有标签的表达式，解析成dom结构-->
+    {{{message}}}
+    {{ age}}
+    {{name}}
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    var msg={message:"<div>hello world<div>"};
+    var vm = new Vue({
+        el: "#app",
+        data: msg
+    });
+
+    vm.$set("age",100);
+
+    Vue.set(msg,"name","li xiansheng");
+</script>
+</body>
+</html>
