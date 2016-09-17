@@ -234,3 +234,23 @@ track-by 可以跟踪属性，复用重复的属性。 track-by=""; 指定遍历
     <div v-text="hello"></div> // v-text 绑定文本
     <div v-cloak>{{hello}}</div> //增加样式(隐藏样式)
 ````
+## 11. 事件修饰符
+### 11.1 事件修饰符
+@click.stop="" 防止事件冒泡。防止子事件触发时，触发父级事件。
+@click.self="" 本身元素触发时才调用
+@click.prevent 阻止默认事件
+
+### 11.2 按键修饰符
+|enter	|按下回车键|	up	|按下上键	|left	|按下左键|
+|tab	|按下tab键|	down|	按下下键|	delete	|按下删除键|
+|esc	|按下ESC|	right|	按下右键	|space|	按下空格键|
+
+@keyup.13="" 或着@keyup.enter="" 采用asicii值和关键字符。
+
+## 12. 过滤器
+|过滤器名字	|作用	|过滤器名字|	作用
+|capitalize	|首字母大写|	uppercase	|转换成大写
+|lowercase	|转换成小写|	currency	|货币过滤器
+|pluralize	|根据数量	|json	对象过滤器|
+|debounce	|延迟数据刷新	|limitBy	限制|
+|filterBy	|过滤器属性	|orderBy	排序过滤器|
