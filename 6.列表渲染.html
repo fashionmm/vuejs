@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+</head>
+<body>
+<ul id="app">
+    <!--给对象或者当前数组元素定义索引别名，如果是对象时，索引为属性名称-->
+    <li v-for="(index,item) of list">{{index}}-{{item}}</li>
+    <!--v-for内置属性$index,指当前数组元素的索引-->
+    <li v-for="item of list">{{$index}}-{{item}}</li>
+    <!--为对象时，索引为键名-->
+    <li v-for="item of category">{{$index}}-{{$key}}:{{item}}</li>
+    <li v-for="(key,value) of category">{{$index}}:{{key}}-{{value}}:{{$key}}</li>
+
+    <li v-for="(key,val) of data">{{key}}-{{val.id}}-{{val.name}}</li>
+
+    <li v-for="(key,val) of data1" track-by="$index">{{val}}</li>
+</ul>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    var msg = ["苹果", "香蕉", "橘子", "梨子"];
+    var vm = new Vue({
+                el: "#app",
+                data: {
+                    list: msg,
+                    category: {id: "001", name: "水果"},
+                    data: [
+                        {id: "001", name: "水果"},
+                        {id: "002", name: "蔬菜"}],
+                    data1: ["苹果", "苹果", "苹果", "苹果"]
+                }
+            })
+            ;
+
+</script>
+</body>
+</html>
