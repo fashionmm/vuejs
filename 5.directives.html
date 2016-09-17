@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div id="app">
+    <div v-if="true">hello</div>
+    <div v-else>world</div>
+
+    <div v-show="true">看得见</div>
+    <div>分割线</div>
+    <div v-else>看不见</div>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    var msg = {message: "hello world"};
+    var vm = new Vue({
+        el: "#app",
+        data: msg
+    });
+
+</script>
+</body>
+</html>

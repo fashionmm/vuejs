@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+  <div>{{hello}}</div>
+    <div v-text="hello"></div>
+    <div v-cloak>{{hello}}</div>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+
+    var vm = new Vue({
+                el: "#app",
+                data:{
+                    hello:"wwww"
+                }
+            })
+            ;
+
+</script>
+</body>
+</html>

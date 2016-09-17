@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+</head>
+<body>
+<div id="app">
+    <img v-bind:src="src"  alt="">
+    <!--<img :src="src"  alt="">-->
+    <a v-bind:href="href">百度</a>
+    <a :href="href">百度2</a>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+
+    var vm = new Vue({
+                el: "#app",
+                data: {
+                    src: "http://vuejs.org.cn/images/lifecycle.png",
+                    href: "http://www.baidu.com"
+                }
+            })
+            ;
+
+</script>
+</body>
+</html>
