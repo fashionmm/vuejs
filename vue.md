@@ -247,10 +247,63 @@ track-by 可以跟踪属性，复用重复的属性。 track-by=""; 指定遍历
 
 @keyup.13="" 或着@keyup.enter="" 采用asicii值和关键字符。
 
+### 11.3 自定义修饰符
+Vue.directive("on").keyCodes.A=65;
+
 ## 12. 过滤器
+### 12.1 内置过滤器
 |过滤器名字	|作用	|过滤器名字|	作用
 |capitalize	|首字母大写|	uppercase	|转换成大写
 |lowercase	|转换成小写|	currency	|货币过滤器
 |pluralize	|根据数量	|json	对象过滤器|
 |debounce	|延迟数据刷新	|limitBy	限制|
 |filterBy	|过滤器属性	|orderBy	排序过滤器|
+
+````
+ <!--全部转换为大写-->
+    <div>{{"hello"|uppercase}}</div>
+    <!--全部转换为小写-->
+    <div>{{"HELLO"|lowercase}}</div>
+    <!--首字母大写-->
+    <div>{{"hello"|capitalize}}</div>
+    <!--数字转换成带币别符号-->
+    <div>{{money|currency '￥',3}}</div>
+
+    <div>{{9|pluralize 'item' 'item2' 'item3' 'item4' 'item5' 'item6' 'item7' 'item8' 'item9' 'item10' 'item11'}}</div>
+    <div>{{"2016-9-18"}}{{"2016-9-18" | pluralize 'st' 'nd' 'rd' 'th'}}</div>
+    <!--事件延迟某段时间执行-->
+    <div @click=" say|debounce 5000">单击</div>
+   <!--将对象以json格式输出，实际上相当于JSON.stringif()处理后输出-->
+    <div>{{user|json}}</div>
+    <!--显示多少信息-->
+    <!--显示0到2的信息 //1,2-->
+    <div v-for="item in [1,2,3,4,5] |limitBy 2 ">{{item}}</div>
+
+    <div v-for="item in [1,2,3,4,5] |limitBy 2 1 ">{{item}}</div>
+<!--获取数组或者对象属性中包含的字符-->
+    <div v-for="item in [12,23,32,4,5] |filterBy 2 ">{{item}}</div>
+    <div v-for="item in user |filterBy 'lii'  in 'name'  ">{{item}}</div>
+````
+
+### 12.2 自定义过滤器
+单向过滤器定义,将数据模型的数据转换后输出到视图：
+````
+Vue.filter('lowercase',function(value，val1，val2....){
+return "";
+});
+
+过滤器，第一个参数为属性值，第二，三。。。。为过滤器后的参数值。
+````
+
+双向过滤器定义，将数据模型的数据转换后输出到视图，同时也可以将视图输入的数据转换后赋值给数据模式：
+
+``````
+Vue.filter('lowercase',{
+read:function(value,val1){
+return "";//处理后的值
+},
+write:funciton(val，val1){
+return ""; //处理后的值
+}
+});
+``````
