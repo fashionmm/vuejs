@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+</head>
+<body>
+<div id="app">
+   <!--<my-parent>-->
+   <!--</my-parent>-->
+    <div is="my-parent"></div>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+
+    //创建组件构造器
+    var myhello = Vue.extend({
+        template:"<div>你好！世界</div>"
+    });
+
+    var  parent=Vue.extend({
+        template:"<div>中国<my-hello></my-hello></div>",
+        components:{
+            'my-hello':myhello
+        }
+    });
+    // 注册组件
+   // Vue.component('my-hello', myhello);
+   Vue.component('my-parent',parent);
+    //初始化实例
+    var vm = new Vue({
+        el:"#app"
+    });
+</script>
+</body>
+</html>

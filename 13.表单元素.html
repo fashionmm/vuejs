@@ -7,13 +7,35 @@
 </head>
 <body>
 <div id="app">
+    <input type="checkbox" v-model="checkd">
+    <div>单选框{{checkd}}</div>
     <input type="checkbox" checked value="选择1" v-model="name">
     <input type="checkbox"  value="选择2" v-model="name">
     <input type="checkbox"  value="选择3" v-model="name">
-    <div>{{name}}</div>
+    <div>结果：{{name}}</div>
 
-    <input type="radio" checked v-model="choose">
-    <input>
+    <input id="rd1" type="radio"  value="1" v-model="choose">
+    <lable for="rd1">单选1</lable>
+    <input id="rd2" type="radio" value="2" v-model="choose">
+    <lable for="rd2">单选2</lable>
+    <div>结果：{{choose}}</div>
+
+    <select v-model="selected" >
+        <option  selected>A</option>
+        <option >B</option>
+        <option >C</option>
+    </select>
+    <div>selectd:{{selected}}</div>
+
+    <select v-model="selected1" multiple>
+        <option value="a" selected>A</option>
+        <option value="b" >B</option>
+        <option  value="c">C</option>
+    </select>
+    <div>selectd:{{selected1|json}}</div>
+
+    <input type="text" v-model="message" lazy>
+    {{message}}
 </div>
 <script src="node_modules/vue/dist/vue.js"></script>
 <script>
@@ -21,7 +43,11 @@
         el: "#app",
         data: {
             message: "hello",
-            name:[]
+            name:[],
+            choose:1,
+            checkd:true,
+            selected:"",
+            selected1:[]
         }
     });
 
