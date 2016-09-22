@@ -7,22 +7,29 @@
 </head>
 <body>
 <div id="app">
-    <div v-myhello></div>
+    <div v-my-directive:hello="msg">hell</div>
 </div>
 <script src="node_modules/vue/dist/vue.js"></script>
 <script>
 
-    //创建组件构造器
-    var myhello = Vue.extend({
-        template:"<div>你好！世界</div>"
+    Vue.directive('my-directive', {
+        bind: function () {
+            console.log("bind");
+        },
+        update: function (newVal, oldVal) {
+            console.log("update");
+        },
+        unbind: function () {
+            console.log("unbind");
+        }
     });
-
-    // 注册组件
-    Vue.component('my-hello', myhello);
 
     //初始化实例
     var vm = new Vue({
-        el:"#app"
+        el: "#app",
+        data:{
+            msg:"hello"
+        }
     });
 </script>
 </body>

@@ -10,7 +10,9 @@
 <div id="app">
    <!--<my-parent>-->
    <!--</my-parent>-->
-    <div is="my-parent"></div>
+    <div is="my-parent">
+        <my-hello></my-hello>
+    </div>
 </div>
 <script src="node_modules/vue/dist/vue.js"></script>
 <script>
@@ -21,9 +23,9 @@
     });
 
     var  parent=Vue.extend({
-        template:"<div>中国<my-hello></my-hello></div>",
+        template:"<div>中国</div>",
         components:{
-            'my-hello':myhello
+            'myhello':myhello
         }
     });
     // 注册组件
