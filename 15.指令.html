@@ -7,22 +7,27 @@
 </head>
 <body>
 <div id="app">
-    <div v-my-directive:hello="msg">hell</div>
+    <div v-my-directive="msg"></div>
 </div>
 <script src="node_modules/vue/dist/vue.js"></script>
 <script>
-
     Vue.directive('my-directive', {
         bind: function () {
             console.log("bind");
+            console.log(this.msg);
+
         },
         update: function (newVal, oldVal) {
             console.log("update");
+            console.log(this.msg);
+            console.log(newVal,oldVal);
         },
         unbind: function () {
             console.log("unbind");
+            console.log(this.msg);
         }
     });
+
 
     //初始化实例
     var vm = new Vue({
@@ -31,6 +36,10 @@
             msg:"hello"
         }
     });
+
+    vm.msg="ttt";
+
+
 </script>
 </body>
 </html>
